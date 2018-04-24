@@ -1,0 +1,22 @@
+{
+  "name": "free-bagels",
+  "version": "1.0.0",
+  "description": "People get free bagels",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellenfc/free-bagels.git"
+  },
+  "author": "HellenFiallos\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D Fiallos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellenfc/free-bagels/issues"
+  },
+  "homepage": "https://github.com/hellenfc/free-bagels#readme"
+}
