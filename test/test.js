@@ -6,6 +6,11 @@ let lucy = new shouty.person('Lucy', 15, '', '');
 let martin = new shouty.person('Mario', 18, '', '');
 
 describe('Shouty', function () {
+    describe('meter range', () => {
+        it('should return the max meter range', () =>{
+            assert.equal(15, shouty.setRange(15));
+        });
+    });
     describe('People in the 15 meter range', () => {
         it('should return distance from employee', () => {
             assert.equal(15, shouty.getDistance(sean, lucy));

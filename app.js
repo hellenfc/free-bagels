@@ -1,5 +1,5 @@
 let shouty = {}
-
+let meterRange; 
 shouty.person = class Person {
     constructor(name, position, shoutedMessage, heardMessage) {
         this.name = name;
@@ -16,15 +16,20 @@ shouty.getDistance = (employee, client) => {
 shouty.shoutMessage = (message, employee, clients) => {
     employee.shoutedMessage = message;
     for (let i = 0; i < clients.length; i++) {
-        if(shouty.getDistance(employee, clients[i]) <= 15){
-            clients[i].heardMessage = employee.shoutedMessage; 
+        if (shouty.getDistance(employee, clients[i]) <= meterRange) {
+            clients[i].heardMessage = employee.shoutedMessage;
         }
     }
     return employee.shoutedMessage;
 }
 
-shouty.getHeardMessage = (client)=>{
-    return  client.heardMessage;
+shouty.getHeardMessage = (client) => {
+    return client.heardMessage;
+}
+
+shouty.setRange = (range) => {
+    meterRange = range;
+    return meterRange;
 }
 
 module.exports = shouty;
