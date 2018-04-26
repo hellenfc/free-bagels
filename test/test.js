@@ -4,6 +4,7 @@ let shouty = require('../app.js');
 let sean = new shouty.person('Sean', 0, '', '');
 let lucy = new shouty.person('Lucy', 15, '', '');
 let martin = new shouty.person('Mario', 18, '', '');
+let bagel = new shouty.bread('Bagel');
 
 describe('Shouty', function () {
     describe('meter range', () => {
@@ -26,5 +27,25 @@ describe('Shouty', function () {
         it('should return empty heardMessage', () => {
             assert.deepEqual('', shouty.getHeardMessage(martin));            
         }) 
+    })
+    describe('Making the bread', () => {
+        it('should return the ingredients', () => {
+            assert.deepEqual({ 'flour': 1000, 'water': 600, 'salt': 20, 'yeast': 10 }, shouty.setIngredients(bagel, { 'flour': 1000, 'water': 600, 'salt': 20, 'yeast': 10 }));
+        })
+        it('should change state to dough', ()=> {
+            assert.equal('dough', shouty.makeDough(bagel));
+        })
+        it('should set the amount of loaves', ()=> {
+            assert.equal(2, shouty.setLoaves(bagel, 2));
+        })
+        it('should set baking time', () => {
+            assert.equal(0.5, shouty.setBakingTime(bagel, 0.5));
+        })
+        it('should bake the bagels', () => {
+            shouty.bakeBread(bagel).then((response) => {
+                assert.equal('baked', response);           
+            })
+        })
+
     })
 })

@@ -9,6 +9,15 @@ shouty.person = class Person {
     }
 }
 
+shouty.bread = class Bread {
+    constructor(name, ingredients, state, loaves, bakingTime) {
+        this.name = name;
+        this.ingredients = ingredients;
+        this.state = state;
+        this.loaves = loaves;
+        this.bakingTime = bakingTime;
+    }
+}
 shouty.getDistance = (employee, client) => {
     return (client.position - employee.position);
 }
@@ -30,6 +39,38 @@ shouty.getHeardMessage = (client) => {
 shouty.setRange = (range) => {
     meterRange = range;
     return meterRange;
+}
+
+shouty.setIngredients = (bread, ingredients) => {
+    bread.ingredients = ingredients;
+    return bread.ingredients;
+}
+
+shouty.makeDough = (bread) => {
+    bread.state = 'dough';
+    return bread.state;
+}
+
+shouty.setLoaves = (bread, loaves) => {
+    bread.loaves = loaves;
+    return bread.loaves;
+}
+shouty.setBakingTime=(bread, minutes) => {
+    bread.bakingTime = minutes;
+    return bread.bakingTime;
+}
+shouty.bakeBread = (bread) => {
+    return new Promise((resolve, reject) => {
+        setTimeout((error) =>{
+            if (error) {
+                reject(error);
+            } else {
+                bread.state = 'baked';
+                resolve(bread.state);
+            }
+        }, bread.bakingTime * 60000);
+        
+    })
 }
 
 module.exports = shouty;
