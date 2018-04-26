@@ -1,5 +1,5 @@
 let shouty = {}
-let meterRange; 
+let meterRange;
 shouty.person = class Person {
     constructor(name, position, shoutedMessage, heardMessage) {
         this.name = name;
@@ -10,12 +10,13 @@ shouty.person = class Person {
 }
 
 shouty.bread = class Bread {
-    constructor(name, ingredients, state, loaves, bakingTime) {
+    constructor(name, ingredients, state, loaves, bakingTime, breadDetail) {
         this.name = name;
         this.ingredients = ingredients;
         this.state = state;
         this.loaves = loaves;
         this.bakingTime = bakingTime;
+        this.breadDetail = this.breadDetail;
     }
 }
 shouty.getDistance = (employee, client) => {
@@ -43,6 +44,21 @@ shouty.setRange = (range) => {
 
 shouty.setIngredients = (bread, ingredients) => {
     bread.ingredients = ingredients;
+    if (!bread.ingredients.yeast) {
+        if (bread.breadDetail) {
+            bread.breadDetail += 'Bread can not rise and be heavy. ';
+
+        } else {
+            bread.breadDetail = 'Bread can not rise and be heavy. ';
+        }
+    }
+    if (!bread.ingredients.salt) {
+        if (bread.breadDetail) {
+            bread.breadDetail += 'Bread does not taste good. ';
+        } else {
+            bread.breadDetail = 'Bread does not taste good. ';
+        }
+    }
     return bread.ingredients;
 }
 
@@ -55,21 +71,25 @@ shouty.setLoaves = (bread, loaves) => {
     bread.loaves = loaves;
     return bread.loaves;
 }
-shouty.setBakingTime=(bread, minutes) => {
+shouty.setBakingTime = (bread, minutes) => {
     bread.bakingTime = minutes;
     return bread.bakingTime;
 }
 shouty.bakeBread = (bread) => {
     return new Promise((resolve, reject) => {
-        setTimeout((error) =>{
+        setTimeout((error) => {
             if (error) {
                 reject(error);
             } else {
-                bread.state = 'baked';
-                resolve(bread.state);
+                if (bread.bakingTime > 1) {
+                    bread.state = 'burn';
+                    resolve(bread.state);
+                } else {
+                    bread.state = 'baked';
+                    resolve(bread.state);
+                }
             }
         }, bread.bakingTime * 60000);
-        
     })
 }
 
