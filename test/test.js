@@ -39,7 +39,7 @@ describe('Shouty', function () {
             assert.equal(2, shouty.setLoaves(bagel, 2));
         })
         it('should set baking time', () => {
-            assert.equal(1, shouty.setBakingTime(bagel, 1));
+            assert.equal(0, shouty.setBakingTime(bagel, 0));
         })
         it('should bake the bread', async () => {
             await shouty.bakeBread(bagel).then((response) => {
@@ -48,4 +48,7 @@ describe('Shouty', function () {
         })
 
     })
+    shouty.newPerson(10);
+    shouty.randomMessageWithWord('test');
+    shouty.randomMessage(30);
 })

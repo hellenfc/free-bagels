@@ -1,5 +1,7 @@
 let shouty = {}
 let meterRange;
+const faker = require('faker');
+
 shouty.person = class Person {
     constructor(name, position, shoutedMessage, heardMessage) {
         this.name = name;
@@ -93,4 +95,22 @@ shouty.bakeBread = (bread) => {
     })
 }
 
+shouty.randomMessage = (length) => {
+    let newMessage = faker.lorem.paragraphs();
+    let messageArray = newMessage.split(' ');
+    let lengthArray = messageArray.splice(0, length);
+    console.log('Array', lengthArray.join(' '));
+    return lengthArray.join(' ');
+}
+
+shouty.randomMessageWithWord = (word) => {
+    let newMessage = faker.lorem.word()+ ' ' + word + ' ' + faker.lorem.words();
+    console.log('message', newMessage)
+    return newMessage;
+}
+
+shouty.newPerson = (distance) => {
+    let person = new shouty.person(faker.name.firstName(), distance) 
+    return person;
+}
 module.exports = shouty;

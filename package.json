@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/hellenfc/free-bagels/issues"
   },
-  "homepage": "https://github.com/hellenfc/free-bagels#readme"
+  "homepage": "https://github.com/hellenfc/free-bagels#readme",
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
 }
