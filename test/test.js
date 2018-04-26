@@ -12,8 +12,8 @@ describe('Shouty', function () {
             assert.equal(15, shouty.setRange(15));
         });
     });
-    describe('People in the 15 meter range', () => {
-        it('should return distance from employee', () => {
+    describe('People inside the meter range', () => {
+        it('should return distance of customer from employee', () => {
             assert.equal(15, shouty.getDistance(sean, lucy));
         })
         it('should return the shouted message', () => {
@@ -23,7 +23,7 @@ describe('Shouty', function () {
             assert.equal('Free bagels!', shouty.getHeardMessage(lucy));
         })
     });
-    describe('People outside the 15 meter range', () => {
+    describe('People outside the meter range', () => {
         it('should return empty heardMessage', () => {
             assert.deepEqual('', shouty.getHeardMessage(martin));
         })
@@ -31,9 +31,6 @@ describe('Shouty', function () {
     describe('Making the bread', () => {
         it('should return the ingredients', () => {
             assert.deepEqual({ 'flour': 1000, 'water': 600, 'salt': 20, 'yeast': 10 }, shouty.setIngredients(bagel, { 'flour': 1000, 'water': 600, 'salt': 20, 'yeast': 10 }));
-        })
-        it('should return the ingredients', () => {
-            assert.deepEqual({ 'flour': 1000, 'water': 600, 'salt': 20 }, shouty.setIngredients(bagel, { 'flour': 1000, 'water': 600, 'salt': 20 }));
         })
         it('should change state to dough', () => {
             assert.equal('dough', shouty.makeDough(bagel));
@@ -44,7 +41,7 @@ describe('Shouty', function () {
         it('should set baking time', () => {
             assert.equal(1, shouty.setBakingTime(bagel, 1));
         })
-        it('should bake the bagels', async () => {
+        it('should bake the bread', async () => {
             await shouty.bakeBread(bagel).then((response) => {
                 assert.equal('baked', response);
             })
